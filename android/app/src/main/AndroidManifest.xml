@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.bee_up_to_date">
    <application
-        android:label="bee_up_to_date"
+        android:label="Bee up to date"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
