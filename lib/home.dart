@@ -11,14 +11,7 @@ class MyHome extends StatefulWidget {
 }
 
 class _MyHomeState extends State<MyHome> {
-  int _counter = 0;
   int _selectedIndex = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
 
   void _onItemTapped(int index) {
     setState(() {
@@ -26,12 +19,73 @@ class _MyHomeState extends State<MyHome> {
     });
   }
 
+  Widget bodyFunction() {
+    switch (_selectedIndex) {
+      case 0:
+        return Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const MyInsertApiaryForm(),
+                    ),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.amber,
+                  foregroundColor: Colors.black,
+                  shadowColor: Colors.black,
+                  padding: const EdgeInsets.fromLTRB(25, 15, 25, 15),
+                  textStyle: const TextStyle(fontSize: 20),
+                ),
+                child: const Text('Apiary'),
+              ),
+              ElevatedButton(
+                onPressed: null,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.amber,
+                  foregroundColor: Colors.black,
+                  shadowColor: Colors.black,
+                  padding: const EdgeInsets.fromLTRB(25, 15, 25, 15),
+                  textStyle: const TextStyle(fontSize: 20),
+                ),
+                child: const Text('Hive'),
+              ),
+              ElevatedButton(
+                onPressed: null,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.amber,
+                  foregroundColor: Colors.black,
+                  shadowColor: Colors.black,
+                  padding: const EdgeInsets.fromLTRB(25, 15, 25, 15),
+                  textStyle: const TextStyle(fontSize: 20),
+                ),
+                child: const Text('Honey harvest'),
+              ),
+            ],
+          ),
+        );
+      case 1:
+        return Container(color: Colors.blue);
+      case 2:
+        return Container(color: Colors.orange);
+      default:
+        return Container(color: Colors.blue);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         leading: const Image(image: AssetImage('assets/bee.jpg')),
-        title: Text(widget.title),
+        title: Text(
+            widget.title,
+            style: const TextStyle(fontSize: 26)
+        ),
         actions: const [
           IconButton(
             onPressed: null,
@@ -42,55 +96,25 @@ class _MyHomeState extends State<MyHome> {
           ),
         ],
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
+      body: bodyFunction(),
       bottomNavigationBar: BottomNavigationBar(
-        items: <BottomNavigationBarItem>[
+        items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: SizedBox(
-              height: 37.5,
-              child: IconButton(
-                onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => const MyInsertApiaryForm(),
-                    ),
-                  );
-                },
-                icon: const Icon(Icons.add),
-              ),
-            ),
+            icon: Icon(Icons.add),
             label: 'Add',
             backgroundColor: Colors.amber,
           ),
-          const BottomNavigationBarItem(
+          BottomNavigationBarItem(
             icon: Icon(Icons.map),
             label: 'Maps',
             backgroundColor: Colors.amber,
           ),
-          const BottomNavigationBarItem(
+          BottomNavigationBarItem(
             icon: Icon(Icons.qr_code_2_outlined),
             label: 'Scan QR code',
             backgroundColor: Colors.amber,
           ),
-          const BottomNavigationBarItem(
+          BottomNavigationBarItem(
             icon: Icon(Icons.show_chart),
             label: 'Statistics',
             backgroundColor: Colors.amber,
