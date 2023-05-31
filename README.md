@@ -1,16 +1,12 @@
-# bee_up_to_date
+# Bee up to date
+An android application, written in Flutter for helping beekepers. The project is related to "Design of mobile applications" course and in particular,
+the project is part of the exam.
 
-A new Flutter project.
+## UI/UX
+The application features a modern UI/UX which conforms with Google's last Material design guidelines (More informations on Material.io).
 
-## Getting Started
+## Technology used
+The application is written in the Dart language on the Flutter framework.
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Future implementations
+In the future I will provide it also for IOs users.
