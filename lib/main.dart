@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Bee up to date',
       theme: ThemeData(
-        primarySwatch: Colors.amber,
+        useMaterial3: true,
       ),
       home: const MyHome(title: 'Bee up to date'),
     );

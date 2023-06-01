@@ -81,7 +81,7 @@ class _MyHomeState extends State<MyHome> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const Image(image: AssetImage('assets/bee.jpg')),
+        leading: const Image(image: AssetImage('assets/bee.png')),
         title: Text(
             widget.title,
             style: const TextStyle(fontSize: 26)

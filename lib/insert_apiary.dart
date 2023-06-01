@@ -23,7 +23,6 @@ class _MyInsertApiaryFormState extends State<MyInsertApiaryForm> {
           icon: const Icon(Icons.arrow_back, color: Colors.black),
         ),
         title: const Text('Add apiary'),
-        backgroundColor: Colors.amber,
       ),
       body: Form(
         key: _formKey,
