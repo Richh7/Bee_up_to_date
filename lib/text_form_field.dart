@@ -34,6 +34,7 @@ class MyTextFormField extends StatelessWidget {
         border: const UnderlineInputBorder(),
         labelText: buildFieldLabel(isRequired, field),
       ),
+      style: Theme.of(context).textTheme.bodyText1,
       validator: (value) {
         var lowerCaseText = field[0].toLowerCase() + field.substring(1);
         return validate(value, isRequired, lowerCaseText);

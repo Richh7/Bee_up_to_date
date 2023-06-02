@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'text_form_field.dart';
 
-
 class MyInsertApiaryForm extends StatefulWidget {
   const MyInsertApiaryForm({super.key});
 
@@ -15,14 +14,19 @@ class _MyInsertApiaryFormState extends State<MyInsertApiaryForm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          icon: Icon(
+            Icons.arrow_back,
+            size: IconTheme.of(context).size,
+            color: IconTheme.of(context).color,
+          ),
         ),
-        title: const Text('Add apiary'),
+        title: Text('Add apiary', style: Theme.of(context).textTheme.subtitle1),
       ),
       body: Form(
         key: _formKey,
@@ -32,7 +36,8 @@ class _MyInsertApiaryFormState extends State<MyInsertApiaryForm> {
             children: [
               const MyTextFormField(field: 'Name', isRequired: true),
               const MyTextFormField(field: 'Location', isRequired: true),
-              const MyTextFormField(field: 'Registration number', isRequired: false),
+              const MyTextFormField(
+                  field: 'Registration number', isRequired: false),
               const MyTextFormField(field: 'Description', isRequired: false),
               const Padding(
                 padding: EdgeInsets.only(top: 20),
