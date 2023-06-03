@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'text_form_field.dart';
 
-class MyInsertApiaryForm extends StatefulWidget {
-  const MyInsertApiaryForm({super.key});
+class InsertApiaryForm extends StatefulWidget {
+  const InsertApiaryForm({super.key});
 
   @override
-  State<MyInsertApiaryForm> createState() => _MyInsertApiaryFormState();
+  State<InsertApiaryForm> createState() => _InsertApiaryFormState();
 }
 
-class _MyInsertApiaryFormState extends State<MyInsertApiaryForm> {
+class _InsertApiaryFormState extends State<InsertApiaryForm> {
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -26,7 +26,7 @@ class _MyInsertApiaryFormState extends State<MyInsertApiaryForm> {
             color: IconTheme.of(context).color,
           ),
         ),
-        title: Text('Add apiary', style: Theme.of(context).textTheme.subtitle1),
+        title: Text('Add apiary', style: TextStyle(color: Theme.of(context).colorScheme.primary, fontSize: 30)),
       ),
       body: Form(
         key: _formKey,

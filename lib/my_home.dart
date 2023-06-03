@@ -1,5 +1,7 @@
-import 'package:bee_up_to_date/insert_apiary.dart';
 import 'package:flutter/material.dart';
+import 'package:bee_up_to_date/settings.dart';
+import 'package:bee_up_to_date/insert_apiary.dart';
+
 
 class MyHome extends StatefulWidget {
   const MyHome({super.key});
@@ -9,7 +11,7 @@ class MyHome extends StatefulWidget {
 }
 
 class _MyHomeState extends State<MyHome> {
-  int _selectedIndex = 0;
+  int _selectedIndex = 1;
 
   void _onItemTapped(int index) {
     setState(() {
@@ -20,50 +22,33 @@ class _MyHomeState extends State<MyHome> {
   Widget bodyFunction() {
     switch (_selectedIndex) {
       case 0:
-        return Container(
-          color: Theme.of(context).backgroundColor,
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => const MyInsertApiaryForm(),
-                      ),
-                    );
-                  },
-                  child: Text('Apiary', style: Theme.of(context).textTheme.button),
-                ),
-                ElevatedButton(
-                  onPressed: null,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.amber,
-                    foregroundColor: Colors.black,
-                    shadowColor: Colors.black,
-                    padding: const EdgeInsets.fromLTRB(25, 15, 25, 15),
-                    textStyle: const TextStyle(fontSize: 20),
-                  ),
-                  child: Text('Hive', style: Theme.of(context).textTheme.button),
-                ),
-                ElevatedButton(
-                  onPressed: null,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.amber,
-                    foregroundColor: Colors.black,
-                    shadowColor: Colors.black,
-                    padding: const EdgeInsets.fromLTRB(25, 15, 25, 15),
-                    textStyle: const TextStyle(fontSize: 20),
-                  ),
-                  child: Text('Honey harvest', style: Theme.of(context).textTheme.button),
-                ),
-              ],
-            ),
+        return Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const InsertApiaryForm(),
+                    ),
+                  );
+                },
+                child: const Text('Apiary'),
+              ),
+              ElevatedButton(
+                onPressed: null,
+                child: const Text('Hive'),
+              ),
+              ElevatedButton(
+                onPressed: null,
+                child: const Text('Honey harvest'),
+              ),
+            ],
           ),
         );
       case 1:
-        return Container(color: Colors.blue);
+        return Container();
       case 2:
         return Container(color: Colors.orange);
       default:
@@ -75,62 +60,57 @@ class _MyHomeState extends State<MyHome> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).backgroundColor,
+        leading: const Image(image: AssetImage('assets/bee.png')),
+        title: Text(
+          'Bee up to date',
+          style: TextStyle(
+              color: Theme.of(context).colorScheme.primary, fontSize: 26),
+        ),
         actions: [
           IconButton(
-            onPressed: null,
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const Settings(),
+                ),
+              );
+            },
             tooltip: 'Settings',
             icon: Icon(
+              size: 30,
+              color: Theme.of(context).colorScheme.primary,
               Icons.settings,
-              size: IconTheme.of(context).size,
-              color: IconTheme.of(context).color,
             ),
           ),
         ],
       ),
       body: bodyFunction(),
       bottomNavigationBar: BottomNavigationBar(
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.add,
-              size: IconTheme.of(context).size,
-              color: IconTheme.of(context).color,
-            ),
-            label: 'Add',
-            backgroundColor: Theme.of(context).bottomNavigationBarTheme.backgroundColor,
-          ),
+        backgroundColor: Colors.amber[100],
+        items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(
               Icons.map,
-              size: IconTheme.of(context).size,
-              color: IconTheme.of(context).color,
             ),
             label: 'Maps',
-            backgroundColor: Theme.of(context).bottomNavigationBarTheme.backgroundColor,
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.qr_code_2_outlined,
-              size: IconTheme.of(context).size,
-              color: IconTheme.of(context).color,
+              Icons.home,
             ),
-            label: 'Scan QR code',
-            backgroundColor: Theme.of(context).bottomNavigationBarTheme.backgroundColor,
+            label: 'Home',
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.show_chart,
-              size: IconTheme.of(context).size,
-              color: IconTheme.of(context).color,
             ),
             label: 'Statistics',
-            backgroundColor: Theme.of(context).bottomNavigationBarTheme.backgroundColor,
           ),
         ],
         currentIndex: _selectedIndex,
-        unselectedItemColor: Theme.of(context).iconTheme.color,
-        selectedItemColor: Theme.of(context).iconTheme.color,
+        selectedItemColor: Theme.of(context).colorScheme.primary,
+        showUnselectedLabels: false,
+        unselectedItemColor: Theme.of(context).colorScheme.secondary,
         onTap: _onItemTapped,
       ),
     );
