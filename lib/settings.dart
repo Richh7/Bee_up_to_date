@@ -24,35 +24,37 @@ class Settings extends StatelessWidget {
       ),
       body: ListView(
         children: [
-          ListTile(
-            leading: Icon(
-              size: 28,
-              color: Theme.of(context).colorScheme.primary,
-              Icons.info,
+          Card(
+            child: ListTile(
+              leading: Icon(
+                size: 28,
+                color: Theme.of(context).colorScheme.primary,
+                Icons.info,
+              ),
+              horizontalTitleGap: 5,
+              title: Text('About app'),
+              onTap: () => showAboutDialog(
+                  context: context,
+                  applicationName: 'Bee up to date',
+                  applicationIcon: Container(
+                    height: 50,
+                    width: 50,
+                    decoration:
+                        BoxDecoration(borderRadius: BorderRadius.circular(20)),
+                    clipBehavior: Clip.antiAlias,
+                    child: const Image(image: AssetImage('assets/app_icon.png')),
+                  ),
+                  applicationVersion: 'Version 1.0',
+                  children: [
+                    const Text(
+                        'The application is created to help beekepers in general. '
+                        'It\'s related to \'Design of mobile Application\' exam.'),
+                    const Divider(),
+                    Container(
+                        alignment: Alignment.bottomRight,
+                        child: const Text('Author: Riccardo Zamolo'))
+                  ]),
             ),
-            horizontalTitleGap: 5,
-            title: Text('About app'),
-            onTap: () => showAboutDialog(
-                context: context,
-                applicationName: 'Bee up to date',
-                applicationIcon: Container(
-                  height: 50,
-                  width: 50,
-                  decoration:
-                      BoxDecoration(borderRadius: BorderRadius.circular(20)),
-                  clipBehavior: Clip.antiAlias,
-                  child: const Image(image: AssetImage('assets/app_icon.png')),
-                ),
-                applicationVersion: 'Version 1.0',
-                children: [
-                  const Text(
-                      'The application was created to help beekepers in general.'
-                      'It\'s related to \'Design of mobile Application\' exam.'),
-                  const Divider(),
-                  Container(
-                      alignment: Alignment.bottomRight,
-                      child: const Text('Author: Riccardo Zamolo'))
-                ]),
           ),
         ],
       ),
