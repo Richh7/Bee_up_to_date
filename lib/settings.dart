@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 
-class Settings extends StatelessWidget {
+class Settings extends StatefulWidget {
   const Settings({super.key});
+
+  @override
+  State<Settings> createState() => _MySettingsState();
+}
+
+class _MySettingsState extends State<Settings> {
+  final List<bool> _selectedWeather = <bool>[true, false];
 
   @override
   Widget build(BuildContext context) {
@@ -26,13 +33,48 @@ class Settings extends StatelessWidget {
         children: [
           Card(
             child: ListTile(
+              title: Text(
+                'Theme mode',
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+              ),
+              trailing: ToggleButtons(
+                direction: Axis.horizontal,
+                onPressed: (int index) {
+                  setState(() {
+                    // The button that is tapped is set to true, and the others to false.
+                    for (int i = 0; i < _selectedWeather.length; i++) {
+                      _selectedWeather[i] = i == index;
+                    }
+                  });
+                },
+                borderRadius: const BorderRadius.all(Radius.circular(8)),
+                fillColor: Theme.of(context).colorScheme.primary,
+                selectedColor: Colors.white,
+                color: Colors.black,
+                isSelected: _selectedWeather,
+                children: [
+                  Icon(Icons.brightness_2_sharp),
+                  Icon(Icons.brightness_7),
+                ],
+              ),
+            ),
+          ),
+          Card(
+            child: ListTile(
               leading: Icon(
                 size: 28,
                 color: Theme.of(context).colorScheme.primary,
                 Icons.info,
               ),
               horizontalTitleGap: 5,
-              title: Text('About app'),
+              title: Text(
+                'About app',
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+              ),
               onTap: () => showAboutDialog(
                   context: context,
                   applicationName: 'Bee up to date',
@@ -42,7 +84,8 @@ class Settings extends StatelessWidget {
                     decoration:
                         BoxDecoration(borderRadius: BorderRadius.circular(20)),
                     clipBehavior: Clip.antiAlias,
-                    child: const Image(image: AssetImage('assets/app_icon.png')),
+                    child:
+                        const Image(image: AssetImage('assets/app_icon.png')),
                   ),
                   applicationVersion: 'Version 1.0',
                   children: [
